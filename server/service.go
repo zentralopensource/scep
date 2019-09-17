@@ -145,6 +145,8 @@ func (svc *service) PKIOperation(ctx context.Context, data []byte) ([]byte, erro
 			x509.ExtKeyUsageClientAuth,
 		},
 		SignatureAlgorithm: csr.SignatureAlgorithm,
+		DNSNames:           csr.DNSNames,
+		URIs:               csr.URIs,
 	}
 
 	certRep, err := msg.SignCSR(ca, svc.caKey, tmpl)
